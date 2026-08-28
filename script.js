@@ -1,10 +1,25 @@
 let gridContainer = document.querySelector("#grid-container");
 gridContainer.style.display = "inline-block";
+gridContainer.style.backgroundColor = "black";
 
 let updateButton = document.querySelector("#user-input");
 
+function getRandomColour() {
+    let symbols = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+        color += symbols[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
 function highlight(event) {
-    event.target.style.backgroundColor = "yellow";
+    event.target.style.backgroundColor = getRandomColour();
+    let opacity = window.getComputedStyle(event.target).getPropertyValue("opacity");
+    if (opacity >= 0) {
+        opacity -= 0.1;
+        event.target.style.opacity = opacity;
+    }
     event.stopPropagation();
 }
 
@@ -20,6 +35,7 @@ function generateGrid(gridSize) {
     gridRow.style.display = "flex";
     for (let j = 0; j < gridSize; j++) {
         let gridCell = document.createElement("div");
+        gridCell.style.backgroundColor = "white";
         gridCell.style.boxSizing = "border-box";
         gridCell.style.border = `${16/gridSize}px solid #000000`;
         gridCell.style.padding = `${80/gridSize}px`;
