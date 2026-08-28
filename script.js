@@ -37,8 +37,8 @@ function generateGrid(gridSize) {
         let gridCell = document.createElement("div");
         gridCell.style.backgroundColor = "white";
         gridCell.style.boxSizing = "border-box";
-        gridCell.style.border = `${16/gridSize}px solid #000000`;
-        gridCell.style.padding = `${80/gridSize}px`;
+        gridCell.style.border = `${40/gridSize}px solid #000000`;
+        gridCell.style.padding = `${200/gridSize}px`;
         gridRow.appendChild(gridCell);
     }
     gridContainer.appendChild(gridRow);
